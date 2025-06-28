@@ -4,7 +4,7 @@ import math
 from elements import ELEMENTS
 
 pygame.init()
-WIDTH, HEIGHT = 900, 700
+WIDTH, HEIGHT = 1200,1000
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Visual Chemistry Lab")
 clock = pygame.time.Clock()
