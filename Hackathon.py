@@ -16,7 +16,7 @@ FONT_COLOR = (255, 255, 255)
 
 PARTICLE_COLORS = {
     "proton": (220, 50, 50),
-    "neutron": (50, 220, 50),
+    "neutron": (128, 128, 128),
     "electron": (50, 100, 255)
 }
 
@@ -186,31 +186,42 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_r:
-            reset()
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                reset()
+
+            elif event.key == pygame.K_p:
+                counts["proton"] += 1
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+            elif event.key == pygame.K_n:
+                counts["neutron"] += 1
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+            elif event.key == pygame.K_e:
+                counts["electron"] += 1
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+
+            elif event.key == pygame.K_1:  # Optional: decrement example
+                counts["proton"] = max(0, counts["proton"] - 1)
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+            elif event.key == pygame.K_2:
+                counts["neutron"] = max(0, counts["neutron"] - 1)
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+            elif event.key == pygame.K_3:
+                counts["electron"] = max(0, counts["electron"] - 1)
+                update_positions()
+                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for p in particles:
                 if p.rect.collidepoint(event.pos):
                     p.dragging = True
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_p and event.key == pygame.KEYUP:
-                counts["proton"] += 1
-                update_positions()
-            elif event.key == pygame.K_n and event.key == pygame.KEYUP:
-                counts["neutron"] += 1
-                update_positions()
-            elif  event.key == pygame.K_e and event.key == pygame.KEYUP:
-                counts["electron"] += 1
-                update_positions()
-            elif event.key == pygame.K_e:
-                counts["electron"] -= 1
-                update_positions()
-            elif event.key == pygame.K_n:
-                counts["neutron"] -= 1
-                update_positions()
-            elif event.key == pygame.K_p:
-                counts["proton"] -=1
-                update_positions()
+
         elif event.type == pygame.MOUSEBUTTONUP:
             for p in particles:
                 if p.dragging:
