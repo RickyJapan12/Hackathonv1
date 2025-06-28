@@ -20,7 +20,7 @@ PARTICLE_COLORS = {
     "electron": (50, 100, 255)
 }
 
-SHELLS = [2, 8, 18, 32]
+SHELLS = [2, 8, 18, 32, 18, 8, 2]
 
 counts = {"proton": 0, "neutron": 0, "electron": 0}
 proton_positions = []
@@ -95,7 +95,7 @@ def layout_ring(center, radius, count):
     ]
 
 
-def calculate_nucleus_positions(count, layers=[6, 12, 18, 24, 30]):
+def calculate_nucleus_positions(count, layers=[8, 16, 24, 32, 40]):
     positions = []
     total = 0
     for layer_index, max_in_layer in enumerate(layers):
@@ -111,7 +111,7 @@ def calculate_nucleus_positions(count, layers=[6, 12, 18, 24, 30]):
 def calculate_electron_positions(electron_count):
     positions = []
     left = electron_count
-    radius_start = 80
+    radius_start = 140
     for shell_index, max_e in enumerate(SHELLS):
         e_in_shell = min(left, max_e)
         positions.extend(layout_ring(CENTER, radius_start + shell_index * 40, e_in_shell))
@@ -150,11 +150,11 @@ def reset():
 
 def draw_particles():
     for pos in proton_positions:
-        pygame.draw.circle(screen, PARTICLE_COLORS["proton"], pos, 5)
+        pygame.draw.circle(screen, PARTICLE_COLORS["proton"], pos, 4)
     for pos in neutron_positions:
-        pygame.draw.circle(screen, PARTICLE_COLORS["neutron"], pos, 5)
+        pygame.draw.circle(screen, PARTICLE_COLORS["neutron"], pos, 4)
     for pos in electron_positions:
-        pygame.draw.circle(screen, PARTICLE_COLORS["electron"], pos, 5)
+        pygame.draw.circle(screen, PARTICLE_COLORS["electron"], pos, 4)
 
 
 def draw_structure():
