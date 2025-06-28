@@ -41,7 +41,6 @@ def identify_atom(p, n, e):
     element = ELEMENTS.get(p)
     if not element:
         return None
-
     mass_number = p + n
     isotope_info = element["isotopes"].get(mass_number)
     if not isotope_info:
