@@ -81,4 +81,93 @@ ELEMENTS = {
     80: {"name":"Mercury","symbol":"Hg","atomic_number":80,"isotopes":{202:"Mercury-202"},"fact":"Thermometers."},
     81: {"name":"Thallium","symbol":"Tl","atomic_number":81,"isotopes":{205:"Thallium-205"},"fact":"Semiconductors."},
     82: {"name":"Lead","symbol":"Pb","atomic_number":82,"isotopes":{208:"Lead-208"},"fact":"Dense, radiation shield."},
+    91: {
+    "name": "Protactinium",
+    "symbol": "Pa",
+    "atomic_number": 91,
+    "isotopes": {
+        231: {"name": "Protactinium‑231", "unstable": True}
+    },
+    "fact": "Very rare and radioactive element."
+},
+92: {
+    "name": "Uranium",
+    "symbol": "U",
+    "atomic_number": 92,
+    "isotopes": {
+        238: {"name": "Uranium‑238", "unstable": True}
+    },
+    "fact": "Used as fuel in nuclear reactors and weapons."
+},
+93: {
+    "name": "Neptunium",
+    "symbol": "Np",
+    "atomic_number": 93,
+    "isotopes": {
+        237: {"name": "Neptunium‑237", "unstable": True}
+    },
+    "fact": "First transuranic element."
+},
+94: {
+    "name": "Plutonium",
+    "symbol": "Pu",
+    "atomic_number": 94,
+    "isotopes": {
+        239: {"name": "Plutonium‑239", "unstable": True}
+    },
+    "fact": "Used in nuclear weapons and reactors."
+},
+95: {
+    "name": "Americium",
+    "symbol": "Am",
+    "atomic_number": 95,
+    "isotopes": {
+        241: {"name": "Americium‑241", "unstable": True}
+    },
+    "fact": "Used in smoke detectors."
+},
+96: {
+    "name": "Curium",
+    "symbol": "Cm",
+    "atomic_number": 96,
+    "isotopes": {
+        247: {"name": "Curium‑247", "unstable": True}
+    },
+    "fact": "Named after Marie and Pierre Curie."
+},
+97: {
+    "name": "Berkelium",
+    "symbol": "Bk",
+    "atomic_number": 97,
+    "isotopes": {
+        247: {"name": "Berkelium‑247", "unstable": True}
+    },
+    "fact": "Named after the city of Berkeley, California."
+},
+98: {
+    "name": "Californium",
+    "symbol": "Cf",
+    "atomic_number": 98,
+    "isotopes": {
+        251: {"name": "Californium‑251", "unstable": True}
+    },
+    "fact": "Used in neutron moisture gauges."
+},
+99: {
+    "name": "Einsteinium",
+    "symbol": "Es",
+    "atomic_number": 99,
+    "isotopes": {
+        252: {"name": "Einsteinium‑252", "unstable": True}
+    },
+    "fact": "Named after Albert Einstein."
+},
+100: {
+    "name": "Fermium",
+    "symbol": "Fm",
+    "atomic_number": 100,
+    "isotopes": {
+        257: {"name": "Fermium‑257", "unstable": True}
+    },
+    "fact": "Discovered in hydrogen bomb debris."
 }
