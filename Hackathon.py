@@ -62,7 +62,7 @@ def identify_atom(p, n, e):
 
 
 class Particle(pygame.sprite.Sprite):
-    RADIUS = 20
+    RADIUS = 10
     def __init__(self, kind, pos):
         super().__init__()
         self.kind = kind
@@ -95,14 +95,14 @@ def layout_ring(center, radius, count):
     ]
 
 
-def calculate_nucleus_positions(count, layers=[6, 12, 18]):
+def calculate_nucleus_positions(count, layers=[6, 12, 18, 24, 30]):
     positions = []
     total = 0
     for layer_index, max_in_layer in enumerate(layers):
         if count <= total:
             break
         remaining = min(count - total, max_in_layer)
-        radius = 15 + layer_index * 15
+        radius = 20 + layer_index * 20
         positions.extend(layout_ring(CENTER, radius, remaining))
         total += remaining
     return positions
@@ -150,9 +150,9 @@ def reset():
 
 def draw_particles():
     for pos in proton_positions:
-        pygame.draw.circle(screen, PARTICLE_COLORS["proton"], pos, 7)
+        pygame.draw.circle(screen, PARTICLE_COLORS["proton"], pos, 5)
     for pos in neutron_positions:
-        pygame.draw.circle(screen, PARTICLE_COLORS["neutron"], pos, 7)
+        pygame.draw.circle(screen, PARTICLE_COLORS["neutron"], pos, 5)
     for pos in electron_positions:
         pygame.draw.circle(screen, PARTICLE_COLORS["electron"], pos, 5)
 
