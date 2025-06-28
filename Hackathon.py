@@ -4,7 +4,7 @@ import math
 from elements import ELEMENTS
 
 pygame.init()
-WIDTH, HEIGHT = 1200,1000
+WIDTH, HEIGHT = 1400, 800
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Visual Chemistry Lab")
 clock = pygame.time.Clock()
@@ -70,16 +70,23 @@ class Particle(pygame.sprite.Sprite):
         pygame.draw.circle(self.image, PARTICLE_COLORS[kind], (self.RADIUS, self.RADIUS), self.RADIUS)
         self.rect = self.image.get_rect(center=pos)
         self.dragging = False
+        self.rect = self.image.get_rect(center=pos)
+        self.offset_x = 0
+        self.offset_y = 0
 
     def update(self):
         if self.dragging:
-            self.rect.center = pygame.mouse.get_pos()
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            dx = mouse_x - self.rect.centerx
+            dy = mouse_y - self.rect.centery
+            self.rect.centerx += int(dx * 0.2)  # 0.2 = smoothing factor
+            self.rect.centery +=int(dy * 0.2)
+
 
 
 particles = pygame.sprite.Group()
 for kind, pos in start_positions.items():
     particles.add(Particle(kind, pos))
-
 
 
 def layout_ring(center, radius, count):
@@ -95,16 +102,14 @@ def layout_ring(center, radius, count):
     ]
 
 
-def calculate_nucleus_positions(count, layers=[6, 12, 18, 24]):
+def calculate_nucleus_positions(count, layers=[8, 16, 24, 32, 40]):
     positions = []
     total = 0
-    base_radius = 15
-    layer_spacing = 20  # increase from 15 to 20 for more spacing
     for layer_index, max_in_layer in enumerate(layers):
         if count <= total:
             break
         remaining = min(count - total, max_in_layer)
-        radius = base_radius + layer_index * layer_spacing
+        radius = 20 + layer_index * 20
         positions.extend(layout_ring(CENTER, radius, remaining))
         total += remaining
     return positions
@@ -113,15 +118,13 @@ def calculate_nucleus_positions(count, layers=[6, 12, 18, 24]):
 def calculate_electron_positions(electron_count):
     positions = []
     left = electron_count
-    radius_start = 180
-radius_step = 40  # space between shells
-for shell_index, max_e in enumerate(SHELLS):
-    e_in_shell = min(left, max_e)
-    shell_radius = radius_start + shell_index * radius_step
-    positions.extend(layout_ring(CENTER, shell_radius, e_in_shell))
-    left -= e_in_shell
-    if left <= 0:
-        break
+    radius_start = 140
+    for shell_index, max_e in enumerate(SHELLS):
+        e_in_shell = min(left, max_e)
+        positions.extend(layout_ring(CENTER, radius_start + shell_index * 40, e_in_shell))
+        left -= e_in_shell
+        if left <= 0:
+            break
     return positions
 
 
@@ -162,9 +165,9 @@ def draw_particles():
 
 
 def draw_structure():
-    pygame.draw.circle(screen, (100, 100, 150), CENTER, 50, 1)
+    pygame.draw.circle(screen, (100, 100, 150), CENTER, 120, 1)
     for i in range(len(SHELLS)):
-        pygame.draw.circle(screen, (60, 60, 60), CENTER, 80 + i * 40, 1)
+        pygame.draw.circle(screen, (60, 60, 60), CENTER, 140 + i * 40, 1)
 
 
 def draw_counts():
