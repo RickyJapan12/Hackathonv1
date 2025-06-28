@@ -20,7 +20,7 @@ PARTICLE_COLORS = {
     "electron": (50, 100, 255)
 }
 
-SHELLS = [2, 8, 18]
+SHELLS = [2, 8, 18, 32]
 
 counts = {"proton": 0, "neutron": 0, "electron": 0}
 proton_positions = []
