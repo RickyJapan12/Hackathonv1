@@ -251,6 +251,6 @@ while running:
     pygame.display.flip()
     clock.tick(60)
 
-pygame.qcduit()
+pygame.quit()
 sys.exit()
 
