@@ -95,14 +95,16 @@ def layout_ring(center, radius, count):
     ]
 
 
-def calculate_nucleus_positions(count, layers=[8, 16, 24, 32, 40]):
+def calculate_nucleus_positions(count, layers=[6, 12, 18, 24]):
     positions = []
     total = 0
+    base_radius = 15
+    layer_spacing = 20  # increase from 15 to 20 for more spacing
     for layer_index, max_in_layer in enumerate(layers):
         if count <= total:
             break
         remaining = min(count - total, max_in_layer)
-        radius = 20 + layer_index * 20
+        radius = base_radius + layer_index * layer_spacing
         positions.extend(layout_ring(CENTER, radius, remaining))
         total += remaining
     return positions
@@ -111,13 +113,15 @@ def calculate_nucleus_positions(count, layers=[8, 16, 24, 32, 40]):
 def calculate_electron_positions(electron_count):
     positions = []
     left = electron_count
-    radius_start = 140
-    for shell_index, max_e in enumerate(SHELLS):
-        e_in_shell = min(left, max_e)
-        positions.extend(layout_ring(CENTER, radius_start + shell_index * 40, e_in_shell))
-        left -= e_in_shell
-        if left <= 0:
-            break
+    radius_start = 180
+radius_step = 40  # space between shells
+for shell_index, max_e in enumerate(SHELLS):
+    e_in_shell = min(left, max_e)
+    shell_radius = radius_start + shell_index * radius_step
+    positions.extend(layout_ring(CENTER, shell_radius, e_in_shell))
+    left -= e_in_shell
+    if left <= 0:
+        break
     return positions
 
 
