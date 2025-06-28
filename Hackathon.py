@@ -41,17 +41,25 @@ def identify_atom(p, n, e):
     element = ELEMENTS.get(p)
     if not element:
         return None
-    isotope = element["isotopes"].get(n)
-    if not isotope:
+
+    mass_number = p + n
+    isotope_info = element["isotopes"].get(mass_number)
+    if not isotope_info:
         return None
+
+    isotope_name = isotope_info["name"] if isinstance(isotope_info, dict) else isotope_info
+    unstable = isotope_info.get("unstable", False) if isinstance(isotope_info, dict) else False
+
     return {
         "name": element["name"],
         "symbol": element["symbol"],
         "atomic_number": p,
-        "mass_number": p + n,
-        "isotope": isotope,
+        "mass_number": mass_number,
+        "isotope": isotope_name,
+        "unstable": unstable,
         "fact": element["fact"]
     }
+
 
 
 class Particle(pygame.sprite.Sprite):
@@ -171,6 +179,7 @@ def draw_atom_info():
             f"Isotope: {last_atom_info['isotope']}",
             f"Atomic Number: {last_atom_info['atomic_number']}",
             f"Mass Number: {last_atom_info['mass_number']}",
+            f"Stability:{not last_atom_info['unstable']}",
             f"Fact: {last_atom_info['fact']}"
         ]
         y = 500
