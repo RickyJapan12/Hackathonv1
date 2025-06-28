@@ -1,7 +1,7 @@
 import pygame
 import sys
 import math
-from elements import ELEMENTS  # You must have an ELEMENTS dictionary defined
+from elements import ELEMENTS
 
 pygame.init()
 WIDTH, HEIGHT = 900, 700
@@ -20,7 +20,7 @@ PARTICLE_COLORS = {
     "electron": (50, 100, 255)
 }
 
-SHELLS = [2, 8, 18]  # Electron shell capacities
+SHELLS = [2, 8, 18]
 
 counts = {"proton": 0, "neutron": 0, "electron": 0}
 proton_positions = []
@@ -74,6 +74,7 @@ for kind, pos in start_positions.items():
     particles.add(Particle(kind, pos))
 
 
+
 def layout_ring(center, radius, count):
     if count == 0:
         return []
@@ -122,7 +123,7 @@ def update_positions():
 
 def handle_drop(particle):
     kind = particle.kind
-    if particle.rect.centerx > 300:  # Accept drop only on right half
+    if particle.rect.centerx > 300:
         counts[kind] += 1
         update_positions()
         global last_atom_info
@@ -191,6 +192,25 @@ while running:
             for p in particles:
                 if p.rect.collidepoint(event.pos):
                     p.dragging = True
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p and event.key == pygame.KEYUP:
+                counts["proton"] += 1
+                update_positions()
+            elif event.key == pygame.K_n and event.key == pygame.KEYUP:
+                counts["neutron"] += 1
+                update_positions()
+            elif  event.key == pygame.K_e and event.key == pygame.KEYUP:
+                counts["electron"] += 1
+                update_positions()
+            elif event.key == pygame.K_e:
+                counts["electron"] -= 1
+                update_positions()
+            elif event.key == pygame.K_n:
+                counts["neutron"] -= 1
+                update_positions()
+            elif event.key == pygame.K_p:
+                counts["proton"] -=1
+                update_positions()
         elif event.type == pygame.MOUSEBUTTONUP:
             for p in particles:
                 if p.dragging:
@@ -213,4 +233,3 @@ while running:
 
 pygame.quit()
 sys.exit()
-
