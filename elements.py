@@ -170,4 +170,165 @@ ELEMENTS = {
         257: {"name": "Fermium‑257", "unstable": True}
     },
     "fact": "Discovered in hydrogen bomb debris."
+    101: {
+    "name": "Mendelevium",
+    "symbol": "Md",
+    "atomic_number": 101,
+    "isotopes": {
+        258: {"name": "Mendelevium‑258", "unstable": True}
+    },
+    "fact": "Named after Dmitri Mendeleev."
+},
+102: {
+    "name": "Nobelium",
+    "symbol": "No",
+    "atomic_number": 102,
+    "isotopes": {
+        259: {"name": "Nobelium‑259", "unstable": True}
+    },
+    "fact": "Named after Alfred Nobel."
+},
+103: {
+    "name": "Lawrencium",
+    "symbol": "Lr",
+    "atomic_number": 103,
+    "isotopes": {
+        262: {"name": "Lawrencium‑262", "unstable": True}
+    },
+    "fact": "Named after Ernest Lawrence."
+},
+104: {
+    "name": "Rutherfordium",
+    "symbol": "Rf",
+    "atomic_number": 104,
+    "isotopes": {
+        267: {"name": "Rutherfordium‑267", "unstable": True}
+    },
+    "fact": "Named after Ernest Rutherford."
+},
+105: {
+    "name": "Dubnium",
+    "symbol": "Db",
+    "atomic_number": 105,
+    "isotopes": {
+        268: {"name": "Dubnium‑268", "unstable": True}
+    },
+    "fact": "Named after Dubna, Russia."
+},
+106: {
+    "name": "Seaborgium",
+    "symbol": "Sg",
+    "atomic_number": 106,
+    "isotopes": {
+        271: {"name": "Seaborgium‑271", "unstable": True}
+    },
+    "fact": "Named after Glenn T. Seaborg."
+},
+107: {
+    "name": "Bohrium",
+    "symbol": "Bh",
+    "atomic_number": 107,
+    "isotopes": {
+        270: {"name": "Bohrium‑270", "unstable": True}
+    },
+    "fact": "Named after Niels Bohr."
+},
+108: {
+    "name": "Hassium",
+    "symbol": "Hs",
+    "atomic_number": 108,
+    "isotopes": {
+        277: {"name": "Hassium‑277", "unstable": True}
+    },
+    "fact": "Named after the German state of Hesse."
+},
+109: {
+    "name": "Meitnerium",
+    "symbol": "Mt",
+    "atomic_number": 109,
+    "isotopes": {
+        278: {"name": "Meitnerium‑278", "unstable": True}
+    },
+    "fact": "Named after physicist Lise Meitner."
+},
+110: {
+    "name": "Darmstadtium",
+    "symbol": "Ds",
+    "atomic_number": 110,
+    "isotopes": {
+        281: {"name": "Darmstadtium‑281", "unstable": True}
+    },
+    "fact": "Discovered in Darmstadt, Germany."
+    111: {
+    "name": "Roentgenium",
+    "symbol": "Rg",
+    "atomic_number": 111,
+    "isotopes": {
+        282: {"name": "Roentgenium‑282", "unstable": True}
+    },
+    "fact": "Named after Wilhelm Röntgen."
+},
+112: {
+    "name": "Copernicium",
+    "symbol": "Cn",
+    "atomic_number": 112,
+    "isotopes": {
+        285: {"name": "Copernicium‑285", "unstable": True}
+    },
+    "fact": "Named after Nicolaus Copernicus."
+},
+113: {
+    "name": "Nihonium",
+    "symbol": "Nh",
+    "atomic_number": 113,
+    "isotopes": {
+        286: {"name": "Nihonium‑286", "unstable": True}
+    },
+    "fact": "Discovered in Japan."
+},
+114: {
+    "name": "Flerovium",
+    "symbol": "Fl",
+    "atomic_number": 114,
+    "isotopes": {
+        289: {"name": "Flerovium‑289", "unstable": True}
+    },
+    "fact": "Named after the Flerov Laboratory in Russia."
+},
+115: {
+    "name": "Moscovium",
+    "symbol": "Mc",
+    "atomic_number": 115,
+    "isotopes": {
+        290: {"name": "Moscovium‑290", "unstable": True}
+    },
+    "fact": "Named after Moscow."
+},
+116: {
+    "name": "Livermorium",
+    "symbol": "Lv",
+    "atomic_number": 116,
+    "isotopes": {
+        293: {"name": "Livermorium‑293", "unstable": True}
+    },
+    "fact": "Named after Lawrence Livermore National Laboratory."
+},
+117: {
+    "name": "Tennessine",
+    "symbol": "Ts",
+    "atomic_number": 117,
+    "isotopes": {
+        294: {"name": "Tennessine‑294", "unstable": True}
+    },
+    "fact": "Named after Tennessee."
+},
+118: {
+    "name": "Oganesson",
+    "symbol": "Og",
+    "atomic_number": 118,
+    "isotopes": {
+        294: {"name": "Oganesson‑294", "unstable": True}
+    },
+    "fact": "Named after Yuri Oganessian."
+}
 }
