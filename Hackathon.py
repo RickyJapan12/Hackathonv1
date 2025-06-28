@@ -10,7 +10,7 @@ pygame.display.set_caption("Visual Chemistry Lab")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 24)
 
-CENTER = (WIDTH // 2, HEIGHT // 2)
+CENTER = (WIDTH // 2 - 200, HEIGHT // 2)
 BG_COLOR = (20, 20, 20)
 FONT_COLOR = (255, 255, 255)
 
@@ -33,6 +33,14 @@ start_positions = {
     "neutron": (100, 200),
     "electron": (100, 300)
 }
+
+input_boxes = {
+    "proton": pygame.Rect(1200, 100, 140, 32),
+    "neutron": pygame.Rect(1200, 150, 140, 32),
+    "electron": pygame.Rect(1200, 200, 140, 32),
+}
+input_text = {"proton": "", "neutron": "", "electron": ""}
+active_box = None
 
 
 def identify_atom(p, n, e):
@@ -60,9 +68,9 @@ def identify_atom(p, n, e):
     }
 
 
-
 class Particle(pygame.sprite.Sprite):
     RADIUS = 10
+
     def __init__(self, kind, pos):
         super().__init__()
         self.kind = kind
@@ -70,18 +78,10 @@ class Particle(pygame.sprite.Sprite):
         pygame.draw.circle(self.image, PARTICLE_COLORS[kind], (self.RADIUS, self.RADIUS), self.RADIUS)
         self.rect = self.image.get_rect(center=pos)
         self.dragging = False
-        self.rect = self.image.get_rect(center=pos)
-        self.offset_x = 0
-        self.offset_y = 0
 
     def update(self):
         if self.dragging:
-            mouse_x, mouse_y = pygame.mouse.get_pos()
-            dx = mouse_x - self.rect.centerx
-            dy = mouse_y - self.rect.centery
-            self.rect.centerx += int(dx * 0.2)  # 0.2 = smoothing factor
-            self.rect.centery +=int(dy * 0.2)
-
+            self.rect.center = pygame.mouse.get_pos()
 
 
 particles = pygame.sprite.Group()
@@ -148,6 +148,8 @@ def handle_drop(particle):
 def reset():
     global counts, proton_positions, neutron_positions, electron_positions, last_atom_info
     counts = {k: 0 for k in counts}
+    for k in input_text:
+        input_text[k] = ""
     proton_positions.clear()
     neutron_positions.clear()
     electron_positions.clear()
@@ -165,7 +167,6 @@ def draw_particles():
 
 
 def draw_structure():
-    pygame.draw.circle(screen, (100, 100, 150), CENTER, 120, 1)
     for i in range(len(SHELLS)):
         pygame.draw.circle(screen, (60, 60, 60), CENTER, 140 + i * 40, 1)
 
@@ -195,44 +196,26 @@ def draw_atom_info():
             y += 25
 
 
-# Main Loop
+def draw_input_boxes():
+    for k, rect in input_boxes.items():
+        pygame.draw.rect(screen, (255, 255, 255), rect, 2)
+        txt_surface = font.render(f"{k.capitalize()}: {input_text[k]}", True, FONT_COLOR)
+        screen.blit(txt_surface, (rect.x + 5, rect.y + 5))
+
+
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_r:
-                reset()
-
-            elif event.key == pygame.K_p:
-                counts["proton"] += 1
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-            elif event.key == pygame.K_n:
-                counts["neutron"] += 1
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-            elif event.key == pygame.K_e:
-                counts["electron"] += 1
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-
-            elif event.key == pygame.K_1:  # Optional: decrement example
-                counts["proton"] = max(0, counts["proton"] - 1)
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-            elif event.key == pygame.K_2:
-                counts["neutron"] = max(0, counts["neutron"] - 1)
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-            elif event.key == pygame.K_3:
-                counts["electron"] = max(0, counts["electron"] - 1)
-                update_positions()
-                last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
-
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            for name, box in input_boxes.items():
+                if box.collidepoint(event.pos):
+                    active_box = name
+                    break
+            else:
+                active_box = None
             for p in particles:
                 if p.rect.collidepoint(event.pos):
                     p.dragging = True
@@ -243,6 +226,22 @@ while running:
                     p.dragging = False
                     handle_drop(p)
 
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                reset()
+            elif active_box:
+                if event.key == pygame.K_BACKSPACE:
+                    input_text[active_box] = input_text[active_box][:-1]
+                elif event.key == pygame.K_RETURN:
+                    try:
+                        counts[active_box] = int(input_text[active_box])
+                        update_positions()
+                        last_atom_info = identify_atom(counts["proton"], counts["neutron"], counts["electron"])
+                    except:
+                        pass
+                elif event.unicode.isdigit():
+                    input_text[active_box] += event.unicode
+
     particles.update()
     screen.fill(BG_COLOR)
     draw_structure()
@@ -250,9 +249,10 @@ while running:
     particles.draw(screen)
     draw_counts()
     draw_atom_info()
+    draw_input_boxes()
 
-    instructions = font.render("Drag particles → to build atoms. Press R to reset.", True, FONT_COLOR)
-    screen.blit(instructions, (250, 660))
+    instructions = font.render("Drag or type particle counts. Press R to reset.", True, FONT_COLOR)
+    screen.blit(instructions, (CENTER[0] - 200, HEIGHT - 40))
 
     pygame.display.flip()
     clock.tick(60)
