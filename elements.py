@@ -271,5 +271,188 @@ ELEMENTS = {
         },
         "fact": "Used to galvanize steel."
     }
+        31: {
+        "name": "Gallium",
+        "symbol": "Ga",
+        "atomic_number": 31,
+        "isotopes": {
+            39: "Gallium-69",
+            41: "Gallium-71"
+        },
+        "fact": "Melts just above room temperature."
+    },
+    32: {
+        "name": "Germanium",
+        "symbol": "Ge",
+        "atomic_number": 32,
+        "isotopes": {
+            41: "Germanium-74"
+        },
+        "fact": "Used in fiber optics and semiconductors."
+    },
+    33: {
+        "name": "Arsenic",
+        "symbol": "As",
+        "atomic_number": 33,
+        "isotopes": {
+            42: "Arsenic-75"
+        },
+        "fact": "Toxic element used in pesticides."
+    },
+    34: {
+        "name": "Selenium",
+        "symbol": "Se",
+        "atomic_number": 34,
+        "isotopes": {
+            45: "Selenium-80"
+        },
+        "fact": "Used in photocopiers and glassmaking."
+    },
+    35: {
+        "name": "Bromine",
+        "symbol": "Br",
+        "atomic_number": 35,
+        "isotopes": {
+            45: "Bromine-79",
+            47: "Bromine-81"
+        },
+        "fact": "A red-brown liquid at room temperature."
+    },
+    36: {
+        "name": "Krypton",
+        "symbol": "Kr",
+        "atomic_number": 36,
+        "isotopes": {
+            48: "Krypton-84"
+        },
+        "fact": "Used in high-performance lighting."
+    },
+    37: {
+        "name": "Rubidium",
+        "symbol": "Rb",
+        "atomic_number": 37,
+        "isotopes": {
+            48: "Rubidium-85"
+        },
+        "fact": "Highly reactive metal."
+    },
+    38: {
+        "name": "Strontium",
+        "symbol": "Sr",
+        "atomic_number": 38,
+        "isotopes": {
+            50: "Strontium-88"
+        },
+        "fact": "Used in fireworks for red color."
+    },
+    39: {
+        "name": "Yttrium",
+        "symbol": "Y",
+        "atomic_number": 39,
+        "isotopes": {
+            50: "Yttrium-89"
+        },
+        "fact": "Used in LEDs and phosphors."
+    },
+    40: {
+        "name": "Zirconium",
+        "symbol": "Zr",
+        "atomic_number": 40,
+        "isotopes": {
+            51: "Zirconium-90"
+        },
+        "fact": "Used in nuclear reactors."
+    },
+    41: {
+        "name": "Niobium",
+        "symbol": "Nb",
+        "atomic_number": 41,
+        "isotopes": {
+            52: "Niobium-93"
+        },
+        "fact": "Used in superconducting materials."
+    },
+    42: {
+        "name": "Molybdenum",
+        "symbol": "Mo",
+        "atomic_number": 42,
+        "isotopes": {
+            54: "Molybdenum-98"
+        },
+        "fact": "Strengthens steel alloys."
+    },
+    43: {
+        "name": "Technetium",
+        "symbol": "Tc",
+        "atomic_number": 43,
+        "isotopes": {
+            55: "Technetium-99"
+        },
+        "fact": "First artificially produced element."
+    },
+    44: {
+        "name": "Ruthenium",
+        "symbol": "Ru",
+        "atomic_number": 44,
+        "isotopes": {
+            57: "Ruthenium-102"
+        },
+        "fact": "Used in electronics and jewelry."
+    },
+    45: {
+        "name": "Rhodium",
+        "symbol": "Rh",
+        "atomic_number": 45,
+        "isotopes": {
+            58: "Rhodium-103"
+        },
+        "fact": "Highly reflective and corrosion-resistant."
+    },
+    46: {
+        "name": "Palladium",
+        "symbol": "Pd",
+        "atomic_number": 46,
+        "isotopes": {
+            60: "Palladium-106"
+        },
+        "fact": "Used in catalytic converters."
+    },
+    47: {
+        "name": "Silver",
+        "symbol": "Ag",
+        "atomic_number": 47,
+        "isotopes": {
+            61: "Silver-107",
+            63: "Silver-109"
+        },
+        "fact": "Best conductor of electricity."
+    },
+    48: {
+        "name": "Cadmium",
+        "symbol": "Cd",
+        "atomic_number": 48,
+        "isotopes": {
+            64: "Cadmium-114"
+        },
+        "fact": "Used in batteries and pigments."
+    },
+    49: {
+        "name": "Indium",
+        "symbol": "In",
+        "atomic_number": 49,
+        "isotopes": {
+            66: "Indium-115"
+        },
+        "fact": "Used in touchscreens."
+    },
+    50: {
+        "name": "Tin",
+        "symbol": "Sn",
+        "atomic_number": 50,
+        "isotopes": {
+            69: "Tin-119"
+        },
+        "fact": "Used in solder and alloys."
+    }
 }
 
